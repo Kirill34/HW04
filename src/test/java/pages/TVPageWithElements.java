@@ -1,6 +1,7 @@
 package pages;
 
 import elements.Accordeon;
+import elements.Button;
 import elements.CheckBox;
 import elements.Input;
 import org.apache.logging.log4j.LogManager;
@@ -34,6 +35,9 @@ public class TVPageWithElements extends  BasePage{
     //Тип подсветки
     String accordeonLightXpath = "//span[contains(text(),'Тип подсветки экрана')][1]";
     String chbxLightXpath="//span[(contains(text(),'lighttype'))]";
+
+    //Кнопка "Применить"
+    String btnApplyXpath = "//button[contains(text(),'Применить')]";
 
     public void setProducer(String producer)
     {
@@ -79,6 +83,12 @@ public class TVPageWithElements extends  BasePage{
         chbxLightXpath = chbxLightXpath.replace("lighttype", light);
         CheckBox chbxLight = new CheckBox(driver, By.xpath(chbxLightXpath));
         chbxLight.setChecked(true);
+    }
+
+    public void clickApplyBtn()
+    {
+        Button btnApply = new Button(driver, By.xpath(btnApplyXpath));
+        btnApply.click();
     }
 
 }

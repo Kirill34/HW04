@@ -41,6 +41,9 @@ public class TVPage1_Test extends BaseTest {
 
         tvPage.setLight("Direct LED");
 
+        JSExec.scrollBy(0,1300);
+        tvPage.clickApplyBtn();
+
         return  startPage;
     }
 }
