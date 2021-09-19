@@ -32,7 +32,9 @@ public class TVPage1_Test extends BaseTest {
         JSExec.scrollBy(0,500);
         tvPage.setProducer("Samsung");
 
-
+        JSExec.scrollBy(0,800);
+        tvPage.setAccordeonDiagonalClick();
+        tvPage.setDiagonalInterval("60","80");
 
         return  startPage;
     }
