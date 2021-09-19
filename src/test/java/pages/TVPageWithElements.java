@@ -60,12 +60,12 @@ public class TVPageWithElements extends  BasePage{
         accordeonDiagonal.show();
     }
 
-    public void setDiagonalInterval(String min, String max)
+    public void setDiagonalInterval(int min, int max)
     {
         Input inputMin=new Input(driver, By.xpath(inputMinDiagonalXpath));
         Input inputMax = new Input(driver, By.xpath(inputMaxDiagonalXpath));
-        inputMin.setValue(min);
-        inputMax.setValue(max);
+        inputMin.setValue(String.valueOf(min));
+        inputMax.setValue(String.valueOf(max));
     }
 
     public void setFreq(String freq)
