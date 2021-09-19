@@ -28,6 +28,8 @@ public class TVPageWithElements extends  BasePage{
     String inputMaxDiagonalXpath = "(//input[@type='number'])[4]";
 
     //Частота обновления
+    String accordeonFreqXpath = "//span[contains(text(),'Частота обновления экрана')][1]";
+    String chbxFreqXpath="//span[(contains(text(),'freq'))]";
 
     //Тип подсветки
 
@@ -57,6 +59,15 @@ public class TVPageWithElements extends  BasePage{
         Input inputMax = new Input(driver, By.xpath(inputMaxDiagonalXpath));
         inputMin.setValue(min);
         inputMax.setValue(max);
+    }
+
+    public void setFreq(String freq)
+    {
+        Accordeon accordeonFreq = new Accordeon(driver, By.xpath(accordeonFreqXpath));
+        accordeonFreq.show();
+        chbxFreqXpath = chbxFreqXpath.replace("freq", freq);
+        CheckBox chbxFreq = new CheckBox(driver, By.xpath(chbxFreqXpath));
+        chbxFreq.setChecked(true);
     }
 
 }

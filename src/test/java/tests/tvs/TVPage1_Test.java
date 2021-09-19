@@ -36,6 +36,9 @@ public class TVPage1_Test extends BaseTest {
         tvPage.setAccordeonDiagonalClick();
         tvPage.setDiagonalInterval("60","80");
 
+        JSExec.scrollBy(0,1000);
+        tvPage.setFreq("120 Гц");
+
         return  startPage;
     }
 }
