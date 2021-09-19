@@ -27,6 +27,13 @@ public class TVPage1_Test extends BaseTest {
         StartPageWithElements startPage = new StartPageWithElements(driver);
         startPage.linkTVAndMultimediaMove();
         startPage.linkTVsClick();
+
+        TVPageWithElements tvPage = new TVPageWithElements(driver);
+        JSExec.scrollBy(0,500);
+        tvPage.setProducer("Samsung");
+
+
+
         return  startPage;
     }
 }
