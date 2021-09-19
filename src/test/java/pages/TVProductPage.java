@@ -22,7 +22,7 @@ public class TVProductPage extends BasePage{
     private String linkCharsXpath = "//a[(normalize-space(text())='Характеристики')]";
 
     //Диагональ экрана
-    private String spanDiagonalXpath = "//span[normalize-space(text())='Диагональ экрана']/following::span[1]";
+    private String spanDiagonalXpath = "(//span[contains(text(),'Диагональ экрана')][1]/following::span[1])[1]";
 
     //Частота обновления экрана
     private String spanFreqXpath = "//span[normalize-space(text())='Частота обновления экрана']/following::span[1]";

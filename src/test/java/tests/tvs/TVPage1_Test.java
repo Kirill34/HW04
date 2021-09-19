@@ -2,6 +2,7 @@ package tests.tvs;
 
 import helpers.JSExec;
 import helpers.WaitFor;
+import models.*;
 import org.junit.jupiter.api.Test;
 import pages.*;
 import tests.BaseTest;
@@ -11,7 +12,7 @@ public class TVPage1_Test extends BaseTest {
     @Test
     public void firstTest()
     {
-        StartPageWithElements page = getTVPage();
+        StartPageWithElements page = getTVPage(new TV(new Producer(Producer.SAMSUNG), new Frequency(120), new LightType(LightType.DIRECT_LED), new DiagonalInterval(60,80)));
         try {
             Thread.sleep(10000);
         }
@@ -21,7 +22,7 @@ public class TVPage1_Test extends BaseTest {
         }
     }
 
-    public StartPageWithElements getTVPage()
+    public StartPageWithElements getTVPage(TV tv)
     {
         driver.get("https://www.dns-shop.ru/");
         StartPageWithElements startPage = new StartPageWithElements(driver);
@@ -30,16 +31,16 @@ public class TVPage1_Test extends BaseTest {
 
         TVPageWithElements tvPage = new TVPageWithElements(driver);
         JSExec.scrollBy(0,500);
-        tvPage.setProducer("Samsung");
+        tvPage.setProducer(tv.getProducer().getProducer());
 
         JSExec.scrollBy(0,800);
         tvPage.setAccordeonDiagonalClick();
-        tvPage.setDiagonalInterval("60","80");
+        tvPage.setDiagonalInterval(tv.getDiagonalInterval().getMin(),tv.getDiagonalInterval().getMax());
 
         JSExec.scrollBy(0,1000);
-        tvPage.setFreq("120 Гц");
+        tvPage.setFreq(tv.getFrequency().toString());
 
-        tvPage.setLight("Direct LED");
+        tvPage.setLight(tv.getLightType().getLightType());
 
         JSExec.scrollBy(0,1300);
         tvPage.clickApplyBtn();
@@ -47,6 +48,8 @@ public class TVPage1_Test extends BaseTest {
         JSExec.scrollBy(0, -500);
         tvPage.clickFirstItem("65\" (163 см) Телевизор LED Samsung QE65Q70AAUXRU серый [4K UltraHD, 3840x2160, DVB-S2, DVB-S, DVB-C, DVB-T2, DLNA, Wi-Fi, Tizen, HDMI х 4, USB х 2]");
 
+        TVProductPage tvProductPage = new TVProductPage(driver);
+        TV resultTV=tvProductPage.getTV();
         return  startPage;
     }
 }
