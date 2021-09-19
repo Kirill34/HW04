@@ -19,7 +19,7 @@ public class StartPageWithElements extends BasePage {
     // Ссылка "Смартфоны и гаджеты"
     String linkTVAndMultimediaXpath = "(//a[contains(text(), \"ТВ и мультимедиа\")])[1]";
     // Ссылка "Смартфоны"
-    String linkTVsXpath = "(//a[contains(text(), \"Телевизоры\")])[2]/following::div/a";
+    String linkTVsXpath = "//a[normalize-space(text())='Телевизоры']";
 
     // Конструктор класса
     public StartPageWithElements(WebDriver driver) {
@@ -46,16 +46,16 @@ public class StartPageWithElements extends BasePage {
     }
 
     // Наведение курсора мыши на ссылку "ТВ и мультимедиа"
-    public void linkSmartsAndGadgetsMove() {
+    public void linkTVAndMultimediaMove() {
         Link linkTVAndMultimedia = new Link(driver, By.xpath(linkTVAndMultimediaXpath));
         linkTVAndMultimedia.focusOnLink();
-        logger.info("Курсор мыши наведен на ссылку \"Смартфоны\"");
+        logger.info("Курсор мыши наведен на ссылку \"Телевизоры и мультимедиа\"");
     }
 
     // Нажатие на ссылку "Телевизоры"
-    public void linkSmartsClick() {
+    public void linkTVsClick() {
         Link linkTVs = new Link(driver, By.xpath(linkTVsXpath));
         linkTVs.click();
-        logger.info("Нажата ссылка \"Смартфоны\"");
+        logger.info("Нажата ссылка \"Телевизоры\"");
     }
 }
