@@ -15,4 +15,9 @@ public class Frequency {
     {
         this.frequency=frequency;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.frequency)+" Гц";
+    }
 }
