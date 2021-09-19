@@ -32,6 +32,8 @@ public class TVPageWithElements extends  BasePage{
     String chbxFreqXpath="//span[(contains(text(),'freq'))]";
 
     //Тип подсветки
+    String accordeonLightXpath = "//span[contains(text(),'Тип подсветки экрана')][1]";
+    String chbxLightXpath="//span[(contains(text(),'lighttype'))]";
 
     public void setProducer(String producer)
     {
@@ -68,6 +70,15 @@ public class TVPageWithElements extends  BasePage{
         chbxFreqXpath = chbxFreqXpath.replace("freq", freq);
         CheckBox chbxFreq = new CheckBox(driver, By.xpath(chbxFreqXpath));
         chbxFreq.setChecked(true);
+    }
+
+    public void setLight(String light)
+    {
+        Accordeon accordeonLight = new Accordeon(driver, By.xpath(accordeonLightXpath));
+        accordeonLight.show();
+        chbxLightXpath = chbxLightXpath.replace("lighttype", light);
+        CheckBox chbxLight = new CheckBox(driver, By.xpath(chbxLightXpath));
+        chbxLight.setChecked(true);
     }
 
 }

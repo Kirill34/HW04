@@ -39,6 +39,8 @@ public class TVPage1_Test extends BaseTest {
         JSExec.scrollBy(0,1000);
         tvPage.setFreq("120 Гц");
 
+        tvPage.setLight("Direct LED");
+
         return  startPage;
     }
 }
