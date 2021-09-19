@@ -3,8 +3,8 @@ package models;
 public class Producer {
     private String producer;
 
-    public final String SAMSUNG = "Samsung";
-    public final String LG = "LG";
+    public static String SAMSUNG = "Samsung";
+    public static String LG = "LG";
 
     public String getProducer() {
         return producer;
