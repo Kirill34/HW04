@@ -1,9 +1,7 @@
 package pages;
 
-import elements.Accordeon;
-import elements.Button;
-import elements.CheckBox;
-import elements.Input;
+import elements.*;
+import helpers.WaitFor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -38,6 +36,9 @@ public class TVPageWithElements extends  BasePage{
 
     //Кнопка "Применить"
     String btnApplyXpath = "//button[contains(text(),'Применить')]";
+
+    //Ссылка на первый результат в поиске
+    String linkFirstItemXpath = "(//a[contains(@class, \"catalog-product__name\")])[1]";
 
     public void setProducer(String producer)
     {
@@ -89,6 +90,13 @@ public class TVPageWithElements extends  BasePage{
     {
         Button btnApply = new Button(driver, By.xpath(btnApplyXpath));
         btnApply.click();
+    }
+
+    public void clickFirstItem(String product)
+    {
+        WaitFor.firstProductMustBe(By.xpath(linkFirstItemXpath), product);
+        Link link = new Link(driver, By.xpath(linkFirstItemXpath));
+        link.click();
     }
 
 }
