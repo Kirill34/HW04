@@ -28,6 +28,11 @@ public class BaseElement {
         webElement = driver.findElement(by);
     }
 
+    public String getAttribute(String attribute)
+    {
+        return webElement.getAttribute(attribute);
+    }
+
     // Получение оборачиваемого элемента
     // Получив оборачиваемый элемент, можно вызвать его методы
     // Например, getText()
