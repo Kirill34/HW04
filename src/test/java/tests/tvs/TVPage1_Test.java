@@ -45,8 +45,11 @@ public class TVPage1_Test extends BaseTest {
         JSExec.scrollBy(0,1300);
         tvPage.clickApplyBtn();
 
-        JSExec.scrollBy(0, -500);
-        tvPage.clickFirstItem("65\" (163 см) Телевизор LED Samsung QE65Q70AAUXRU серый [4K UltraHD, 3840x2160, DVB-S2, DVB-S, DVB-C, DVB-T2, DLNA, Wi-Fi, Tizen, HDMI х 4, USB х 2]");
+        JSExec.scrollBy(0, 0);
+
+        tvPage.clickBeginExpensiveSpan();
+
+        tvPage.clickFirstItem("75\" (189 см) Телевизор LED Samsung QE75Q950TSUXRU серый");
 
         TVProductPage tvProductPage = new TVProductPage(driver);
         TV resultTV=tvProductPage.getTV();

@@ -40,6 +40,16 @@ public class TVPageWithElements extends  BasePage{
     //Ссылка на первый результат в поиске
     String linkFirstItemXpath = "(//a[contains(@class, \"catalog-product__name\")])[1]";
 
+    //Фильтр "сначала недорогие"
+    String spanBeginNotExpensiveXpath = "//span[contains(text(),'Сначала недорогие')]";
+
+    //Фильтр "сначала дорогие"
+    String spanBeginExpensiveXpath = "//span[contains(text(),'Сначала дорогие')]";
+
+    // Сортировка
+    // - Выпадашка "Сортировка"
+    String accordeonSortXpath = "//span[contains(text(), \"Сортировка:\")]/following::a";
+
     public void setProducer(String producer)
     {
         chbxProducerXpath = chbxProducerXpath.replace("company",producer);
@@ -97,6 +107,16 @@ public class TVPageWithElements extends  BasePage{
         WaitFor.firstProductMustBe(By.xpath(linkFirstItemXpath), product);
         Link link = new Link(driver, By.xpath(linkFirstItemXpath));
         link.click();
+    }
+
+    public void clickBeginExpensiveSpan()
+    {
+        Accordeon accordeonSort = new Accordeon(driver, By.xpath(accordeonSortXpath));
+        accordeonSort.show();
+        logger.info("Найден аккордеон для сортировки");
+        RadioButton rbtnBeginExpensive = new RadioButton(driver, By.xpath(spanBeginExpensiveXpath));
+        rbtnBeginExpensive.setSelected(true);
+        logger.info("Установлена сортировка \"сначала дорогие\"");
     }
 
 }
