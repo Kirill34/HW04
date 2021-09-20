@@ -21,7 +21,7 @@ public class BaseElement {
         this.driver = driver;
         this.by = by;
         // Ожидание появления элемента перед поиском элемента
-        WaitFor.initWait(driver, Duration.ofMillis(3000), Duration.ofMillis(300));
+        WaitFor.initWait(driver, Duration.ofMillis(10000), Duration.ofMillis(5000));
         WaitFor.presenceOfElementLocated(by);
         WaitFor.visibilityOfElementLocated(by);
         // Поиск элемента
